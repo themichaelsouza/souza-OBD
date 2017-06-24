@@ -45,7 +45,7 @@ class Game:
         # Game Loop - events
         for event in pygame.event.get():
             # check for closing window
-            if event.type == pygame.QUIT:
+            if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 if self.playing:
                     self.playing = False
                 self.running = False
