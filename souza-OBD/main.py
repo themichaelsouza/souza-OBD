@@ -54,8 +54,8 @@ class Game:
         self.screen.fill(BLACK)
 
         if pygame.font:
-            mph_text_font = pygame.font.Font("Dancing Juice & Salabat.ttf", 24)
-            mph_font = pygame.font.Font("Dancing Juice & Salabat.ttf", 72)
+            mph_text_font = pygame.font.Font("Dancing Juice & Salabat.ttf", 48)
+            mph_font = pygame.font.Font("Dancing Juice & Salabat.ttf", 150)
 
             mph_text = mph_text_font.render('MPH', 1, (255, 255, 255))
             mph = mph_font.render(str(int(self.mph)), 1, (255, 255, 255))
