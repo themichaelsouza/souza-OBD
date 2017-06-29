@@ -2,7 +2,9 @@
 TITLE = "souza-OBD"
 WIDTH = 800
 HEIGHT = 480
-FPS = 10
+FPS = 15
+FONT = "Dancing Juice & Salabat.ttf"
+SIDE_BUFFER = 100
 
 # define colors
 WHITE = (255, 255, 255)

@@ -4,7 +4,7 @@
 
 import obd
 import pygame
-import random
+from hud_module import *
 from settings import *
 from sprites import *
 
@@ -18,6 +18,10 @@ class Game:
         self.clock = pygame.time.Clock()
         self.running = True
         self.mph = 0
+        self.rpm = 0
+
+        self.test_module_1 = HudModule("MPH")
+        self.test_module_2 = HudModule("RPM", 1)
 
     def new(self):
         # start a new game
@@ -38,8 +42,11 @@ class Game:
         self.all_sprites.update()
         pygame.mouse.set_visible(False)
         self.mph += 1
+        self.rpm += 33
         if self.mph >= 150:
             self.mph = 0
+        if self.rpm >= 5000:
+            self.rpm = 0
 
     def events(self):
         # Game Loop - events
@@ -54,18 +61,8 @@ class Game:
         # Game Loop - draw
         self.screen.fill(BLACK)
 
-        if pygame.font:
-            mph_text_font = pygame.font.Font("Dancing Juice & Salabat.ttf", 48)
-            mph_font = pygame.font.Font("Dancing Juice & Salabat.ttf", 150)
-
-            mph_text = mph_text_font.render('MPH', 1, (255, 255, 255))
-            mph = mph_font.render(str(int(self.mph)), 1, (255, 255, 255))
-
-            mph_text_pos = mph_text.get_rect().move((WIDTH / 2) - (mph_text.get_rect().width / 2), (HEIGHT / 2) - (mph.get_rect().height / 2) - 5)
-            mph_pos = mph.get_rect().move((WIDTH / 2) - (mph.get_rect().width / 2), (HEIGHT / 2) - (mph.get_rect().height / 2))
-
-            self.screen.blit(mph_text, mph_text_pos)
-            self.screen.blit(mph, mph_pos)
+        self.test_module_1.draw_hud_modules(self.screen, self.mph)
+        self.test_module_2.draw_hud_modules(self.screen, self.rpm)
 
         self.all_sprites.draw(self.screen)
         # *after* drawing everything, flip the display
