@@ -54,4 +54,44 @@ class HudModule:
             x = SIDE_BUFFER - (info.get_rect().width / 2)
             y = (SIDE_BUFFER - 20) - (info.get_rect().height / 2)
 
+        # location 2
+        if self.module_location is 2 and position is 1:
+            x = SIDE_BUFFER - (text.get_rect().width / 2)
+            y = (HEIGHT / 2) - (info.get_rect().height / 2) - 5
+        elif self.module_location is 2 and position is 2:
+            x = SIDE_BUFFER - (info.get_rect().width / 2)
+            y = (HEIGHT / 2) - (info.get_rect().height / 2)
+
+        # location 3
+        if self.module_location is 3 and position is 1:
+            x = SIDE_BUFFER - (text.get_rect().width / 2)
+            y = (HEIGHT - SIDE_BUFFER + 20) - (info.get_rect().height / 2) - 5
+        elif self.module_location is 3 and position is 2:
+            x = SIDE_BUFFER - (info.get_rect().width / 2)
+            y = (HEIGHT - SIDE_BUFFER + 20) - (info.get_rect().height / 2)
+
+        # location 4
+        if self.module_location is 4 and position is 1:
+            x = (WIDTH - SIDE_BUFFER) - (text.get_rect().width / 2)
+            y = (SIDE_BUFFER - 20) - (info.get_rect().height / 2) - 5
+        elif self.module_location is 4 and position is 2:
+            x = (WIDTH - SIDE_BUFFER) - (info.get_rect().width / 2)
+            y = (SIDE_BUFFER - 20) - (info.get_rect().height / 2)
+
+        # location 5
+        if self.module_location is 5 and position is 1:
+            x = (WIDTH - SIDE_BUFFER) - (text.get_rect().width / 2)
+            y = (HEIGHT / 2) - (info.get_rect().height / 2) - 5
+        elif self.module_location is 5 and position is 2:
+            x = (WIDTH - SIDE_BUFFER) - (info.get_rect().width / 2)
+            y = (HEIGHT / 2) - (info.get_rect().height / 2)
+
+        # location 6
+        if self.module_location is 6 and position is 1:
+            x = (WIDTH - SIDE_BUFFER) - (text.get_rect().width / 2)
+            y = (HEIGHT - SIDE_BUFFER + 20) - (info.get_rect().height / 2) - 5
+        elif self.module_location is 6 and position is 2:
+            x = (WIDTH - SIDE_BUFFER) - (info.get_rect().width / 2)
+            y = (HEIGHT - SIDE_BUFFER + 20) - (info.get_rect().height / 2)
+
         return x, y

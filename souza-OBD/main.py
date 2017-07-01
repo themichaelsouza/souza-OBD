@@ -19,9 +19,19 @@ class Game:
         self.running = True
         self.mph = 0
         self.rpm = 0
+        self.throttle_position = 0
+        self.temp = 0
+        self.fuel = 100
+        self.oil_pressure = 0
+        self.fuel_pressure = 0
 
-        self.test_module_1 = HudModule("MPH")
+        self.test_module_1 = HudModule("MPH", 0)
         self.test_module_2 = HudModule("RPM", 1)
+        self.test_module_3 = HudModule("THROTTLE POS", 2)
+        self.test_module_4 = HudModule("TEMP", 3)
+        self.test_module_5 = HudModule("FUEL", 4)
+        self.test_module_6 = HudModule("OIL PRESSURE", 5)
+        self.test_module_7 = HudModule("FUEL PRESSURE", 6)
 
     def new(self):
         # start a new game
@@ -43,10 +53,26 @@ class Game:
         pygame.mouse.set_visible(False)
         self.mph += 1
         self.rpm += 33
+        self.throttle_position += 1
+        self.temp += 3
+        self.fuel -= 1
+        self.oil_pressure += 3
+        self.fuel_pressure +=2
+
         if self.mph >= 150:
             self.mph = 0
         if self.rpm >= 5000:
             self.rpm = 0
+        if self.throttle_position >= 100:
+            self.throttle_position = 0
+        if self.temp >= 350:
+            self.temp = 0
+        if self.fuel <= 0:
+            self.fuel = 100
+        if self.oil_pressure >= 140:
+            self.oil_pressure = 0
+        if self.fuel_pressure >= 200:
+            self.fuel_pressure = 0
 
     def events(self):
         # Game Loop - events
@@ -59,10 +85,15 @@ class Game:
 
     def draw(self):
         # Game Loop - draw
-        self.screen.fill(BLACK)
+        self.screen.fill(RED)
 
         self.test_module_1.draw_hud_modules(self.screen, self.mph)
         self.test_module_2.draw_hud_modules(self.screen, self.rpm)
+        self.test_module_3.draw_hud_modules(self.screen, self.throttle_position)
+        self.test_module_4.draw_hud_modules(self.screen, self.temp)
+        self.test_module_5.draw_hud_modules(self.screen, self.fuel)
+        self.test_module_6.draw_hud_modules(self.screen, self.oil_pressure)
+        self.test_module_7.draw_hud_modules(self.screen, self.fuel_pressure)
 
         self.all_sprites.draw(self.screen)
         # *after* drawing everything, flip the display
