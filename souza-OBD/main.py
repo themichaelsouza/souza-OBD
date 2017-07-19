@@ -17,8 +17,13 @@ class Game:
         pygame.display.set_caption(TITLE)
         self.clock = pygame.time.Clock()
         self.running = True
+
+        self.connection = obd.OBD()
+        self.command = obd.commands.RPM
+        self.response = self.connection.query(self.command)
+
         self.mph = 0
-        self.rpm = 0
+        self.rpm = self.response.value
         self.throttle_position = 0
         self.temp = 0
         self.fuel = 100
@@ -51,13 +56,13 @@ class Game:
         # Game Loop - Update
         self.all_sprites.update()
         pygame.mouse.set_visible(False)
-        self.mph += 1
-        self.rpm += 33
-        self.throttle_position += 1
-        self.temp += 3
-        self.fuel -= 1
-        self.oil_pressure += 3
-        self.fuel_pressure +=2
+        #self.mph += 1
+        #self.rpm += 33
+        #self.throttle_position += 1
+        #self.temp += 3
+        #self.fuel -= 1
+        #self.oil_pressure += 3
+        #self.fuel_pressure +=2
 
         if self.mph >= 150:
             self.mph = 0
@@ -85,7 +90,7 @@ class Game:
 
     def draw(self):
         # Game Loop - draw
-        self.screen.fill(RED)
+        self.screen.fill(BLACK)
 
         self.test_module_1.draw_hud_modules(self.screen, self.mph)
         self.test_module_2.draw_hud_modules(self.screen, self.rpm)
