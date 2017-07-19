@@ -13,7 +13,7 @@ class Game:
     def __init__(self):
         # initialize game window, etc
         pygame.init()
-        self.screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
+        self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption(TITLE)
         self.clock = pygame.time.Clock()
         self.running = True
@@ -23,7 +23,7 @@ class Game:
         self.response = self.connection.query(self.command)
 
         self.mph = 0
-        self.rpm = self.response.value
+        self.rpm = 0
         self.throttle_position = 0
         self.temp = 0
         self.fuel = 100
@@ -93,7 +93,7 @@ class Game:
         self.screen.fill(BLACK)
 
         self.test_module_1.draw_hud_modules(self.screen, self.mph)
-        self.test_module_2.draw_hud_modules(self.screen, self.rpm)
+        self.test_module_2.draw_hud_modules(self.screen, str(self.response.value))
         self.test_module_3.draw_hud_modules(self.screen, self.throttle_position)
         self.test_module_4.draw_hud_modules(self.screen, self.temp)
         self.test_module_5.draw_hud_modules(self.screen, self.fuel)
